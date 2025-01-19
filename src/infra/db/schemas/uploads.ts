@@ -8,7 +8,7 @@ export const uploads = pgTable('uploads', {
   name: text('name').notNull(),
   remoteKey: text('remote_key').notNull().unique(),
   remoteUrl: text('remote_url').notNull(),
-  createAt: timestamp('create_at', { withTimezone: true })
+  createdAt: timestamp('create_at', { withTimezone: true })
     .defaultNow()
     .notNull(),
 })
