@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: widget-server pipe ECR
+=======
+name: Pulumi - CI
+>>>>>>> IAC/main
 
 on:
   push:
@@ -6,20 +10,33 @@ on:
       - 'main'
 
 jobs:
+<<<<<<< HEAD
   Build:
     name: Build
+=======
+  update:
+>>>>>>> IAC/main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
 
+<<<<<<< HEAD
       - name: Configure Node
         id: configure-node
         uses: actions/setup-node@v4
         with:
           node-version: 20
       
+=======
+      - name: Install Node
+        id: install-node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+
+>>>>>>> IAC/main
       - name: Install pnpm
         id: install-pnpm
         uses: pnpm/action-setup@v4
@@ -29,13 +46,18 @@ jobs:
       - name: Install dependencies
         id: install-dependencies
         run: |
+<<<<<<< HEAD
           pnpm Install
+=======
+          pnpm install
+>>>>>>> IAC/main
 
       - name: Configure AWS Credentials
         id: configure-aws-credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+<<<<<<< HEAD
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.AWS_REGION }}
 
@@ -91,3 +113,16 @@ jobs:
       #  run: |
       #    docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
       #    docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+=======
+          aws-region: ${{ secrets.AWS_REGION }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Run Pulumi
+        id: run-pulumi
+        uses: pulumi/actions@v6
+        with:
+          command: up
+          stack-name: DiegoCAntunes/stg
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+>>>>>>> IAC/main

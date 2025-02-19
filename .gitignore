@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 node_modules
 .env
 dist
@@ -28,3 +29,7 @@ dist-ssr
 *.sln
 *.sw?
 >>>>>>> frontend/main
+=======
+/bin/
+/node_modules/
+>>>>>>> IAC/main
